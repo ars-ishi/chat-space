@@ -13,14 +13,14 @@
 #### Association
 - has_many :messages
 - has_many :groups, through: :group_users
-- has_many :group_users, dependent: :destroy
+- has_many :group_users
 
 
 ### messages table
 
 |Column|Type|Options|
 |------|----|-------|
-|chat|text|null: false|
+|chat|text||
 |image|string||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
@@ -34,13 +34,13 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false, unique: true|
+|group_name|string|null: false|
 
 
 #### Association
 - has_many :messages
 - has_many :groups, through: :group_users
-- has_many :group_users, dependent: :destroy
+- has_many :group_users
 
 
 ### group_users table
