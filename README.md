@@ -13,7 +13,7 @@ Things you may want to cover:
 
 * Database creation
 
-##users table
+## users table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -27,7 +27,7 @@ Things you may want to cover:
 - has_many :group_users
 
 
-##messages table
+## messages table
 
 |Column|Type|Options|
 |------|----|-------|
