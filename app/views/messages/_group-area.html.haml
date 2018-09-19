@@ -1,13 +1,14 @@
 .group-area
   .group-area__userinfo
-    .userinfo__username naaaaaaaaaame1
+    .userinfo__username<
+      = current_user.name
     %ul.userinfo__edit
       %li
-        %a{href: "/"}
+        %a{href: "/users/#{current_user.id}/edit"}
           = fa_icon 'edit 1.5x'
       %li
-        %a{href: "/"}
-          = fa_icon 'cog 1.5x'
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cog'
   %ul.grouo-area__group-list
     %li
       %a{href: "/"}
