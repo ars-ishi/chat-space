@@ -25,4 +25,5 @@
         %li member19
         %li member20
   .header__group-member-edit
-    %a{href: "/"} Edit
+    = link_to edit_group_path(params[:group_id]) do
+      Edit
