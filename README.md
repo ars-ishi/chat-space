@@ -40,10 +40,10 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :group
 
-## gruops table
+## groups table
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|group_name|string|null: false, index: true, unique: true|
 
 ### association
  - has_many :messages
