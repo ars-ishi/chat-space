@@ -31,10 +31,10 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|chat|text|
+|content|string|
 |image|string|
-|group_id|reference|null: false, foreign_key: true|
-|user_id|reference|null: false, foreign_key: true|
+|group_id|reference|foreign_key: true|
+|user_id|reference|foreign_key: true|
 
 ### association
 - belongs_to :user
