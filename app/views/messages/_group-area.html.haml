@@ -10,43 +10,10 @@
         = link_to edit_user_path(current_user) do
           = fa_icon 'cog'
   %ul.grouo-area__group-list
-    %li
-      %a{href: "/"}
-        .group-list__name group_name1
-        .group-list__message まだメッセージはありません。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name2
-        .group-list__message まだメッセージはありません。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name3
-        .group-list__message ここに最新のメッセージが入ります。
-    %li
-      %a{href: "/"}
-        .group-list__name grooooooooooooooooooooooooooooup_name4
-        .group-list__message ここに最新のメッセージが入ります。ここに最新のメッセージが入ります。ここに最新のメッセージが入ります。ここに最新のメッセージが入ります。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name5
-        .group-list__message ここに最新のメッセージが入ります。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name6
-        .group-list__message ここに最新のメッセージが入ります。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name7
-        .group-list__message ここに最新のメッセージが入ります。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name8
-        .group-list__message ここに最新のメッセージが入ります。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name9
-        .group-list__message ここに最新のメッセージが入ります。
-    %li
-      %a{href: "/"}
-        .group-list__name group_name10
-        .group-list__message ここに最新のメッセージが入ります。
+    - current_user.groups.each do |group|
+      %li
+        = link_to group_messages_path(group) do
+          .group-list__name
+            = group.group_name
+          .group-list__message
+            メッセージはまだありません。
