@@ -1,29 +1,11 @@
 .chat-area__header
   .header__group-info
-    .group-info__name grooooooooooooooooooooooooooooup_name4
+    .group-info__name #{@group.group_name}
     .group-info__title
       %ul.group-info__member-list
         %li Member :
-        %li member01
-        %li member02
-        %li member03
-        %li member04
-        %li member05
-        %li member06
-        %li member07
-        %li member08
-        %li member09
-        %li member10
-        %li member11
-        %li member12
-        %li member13
-        %li member14
-        %li member15
-        %li member16
-        %li member17
-        %li member18
-        %li member19
-        %li member20
+        - @group.users.each do |user|
+          %li #{user.name}
   .header__group-member-edit
-    = link_to edit_group_path(params[:group_id]) do
+    = link_to edit_group_path(@group.id) do
       Edit
