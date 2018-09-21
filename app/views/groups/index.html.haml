@@ -1,2 +1,13 @@
 .main
   = render partial: "messages/group-area"
+  -# 一番最初のグループが選択されている状態に仮置き
+  .chat-area
+    = render partial: "messages/chat-area__header"
+    .chat-area__timeline(data-box = ".scroll")
+      %ul.timeline__message-list
+        - unless @messages.count == 0
+          = render partial: "messages/chat-area__timeline", collection: @messages, as: "message"
+        - else
+          %li
+            .message-list__text まだメッセージはありません。メッセージや画像を投稿してみましょう。
+    = render partial: "messages/chat-area__form"

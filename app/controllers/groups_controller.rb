@@ -2,6 +2,10 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
 
   def index
+    # 一番最初のグループが選択されている状態に仮置き
+    @group = current_user.groups.first
+    @messages = @group.messages
+    @message = Message.new
   end
 
   def new
@@ -12,7 +16,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to root_path, notice: 'created group'
+      redirect_to group_messages_path(@group), notice: 'グループを作成しました。'
     else
       render :new
     end
@@ -23,7 +27,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to group_messages_path(@group), notice: 'Group edited'
+      redirect_to group_messages_path(@group), notice: 'グループを編集しました'
     else
       render :edit
     end

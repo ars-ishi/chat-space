@@ -1,7 +1,7 @@
 .chat-area__form
-  = form_for("") do |f|
+  = form_for [@group, @message] do |f|
     .form__field
-      = f.text_field :chat, placeholder: "type a message", class: "form__field__text"
+      = f.text_field :content, placeholder: "type a message", class: "form__field__text"
       = f.label :image, class: "form__field__icon" do
         = fa_icon 'image 1x'
       = f.file_field :image, class: "form__field__image"

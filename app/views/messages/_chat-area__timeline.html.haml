@@ -1,16 +1,8 @@
-.chat-area__timeline(data-box = ".scroll")
-  %ul.timeline__message-list
-    %li
-      .message-list__name user1
-      .message-list__date 2018/09/17 15:33
-      .message-list__text hogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehoge
-    %li
-      .message-list__name user2
-      .message-list__date 2018/09/18 15:33
-      .message-list__text hogehoge
-    %li
-      .message-list__name user3
-      .message-list__date 2018/09/18 16:33
-      .message-list__text hogehoge
-      .message-list__imgae
-        %img{src: "https://www.pakutaso.com/shared/img/thumb/nuko-8_TP_V1.jpg"}
+%li
+  .message-list__name #{message.user.name}
+  .message-list__date #{l message.created_at, format: :long}
+  - if message.content.present?
+    .message-list__text #{message.content}
+  - if message.image.present?
+    .message-list__image
+      = image_tag message.image.url

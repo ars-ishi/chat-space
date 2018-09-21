@@ -146,11 +146,12 @@ a {
             padding-top: 10px;
             overflow-wrap: break-word;
           }
-          .message-list__imgae {
+          .message-list__image {
             padding-top: 10px;
             float: left;
+            width: 100%;
             img {
-              max-width: 50%;
+              max-width: 60%;
               min-width: 200px;
             }
           }
