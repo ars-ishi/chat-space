@@ -26,8 +26,7 @@ $(function() {
     .done(function(data){
         var html = buildHTML(data);
         $('.timeline__message-list').append(html);
-        $('.form__field__text').val('');
-        $('.form__field__image').val('');
+        $('#new_message')[0].reset();
         $('.main').prepend(`<div class="flash-message-notice">メッセージを送信しました</div>`);
         $(".flash-message-notice").fadeOut(4000).queue(function() {
             this.remove();
