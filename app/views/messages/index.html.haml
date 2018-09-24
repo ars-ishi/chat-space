@@ -4,5 +4,5 @@
     = render partial: "chat-area__header"
     .chat-area__timeline(data-box = ".scroll")
       %ul.timeline__message-list
-        = render partial: "chat-area__timeline", collection: @messages, as: "message"
+        = render @messages
     = render partial: "chat-area__form"
