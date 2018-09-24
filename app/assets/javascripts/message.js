@@ -1,19 +1,16 @@
 $(function() {
   function buildHTML(message){
     if (message.image !== null) {
-        var html =  `<li>
-                      <div class="message-list__name">${message.user_name}</div>
-                      <div class="message-list__date">${message.created_at}</div>
-                      <div class="message-list__text">${message.content}</div>
-                      <div class="message-list__image"><img src="${message.image}"></div>
-                    </li>`
+        var image = `<div class="message-list__image"><img src="${message.image}"></div>`;
     } else {
-        var html =  `<li>
-                      <div class="message-list__name">${message.user_name}</div>
-                      <div class="message-list__date">${message.created_at}</div>
-                      <div class="message-list__text">${message.content}</div>
-                    </li>`
+        var image = "";
     }
+    var html =  `<li>
+                  <div class="message-list__name">${message.user_name}</div>
+                  <div class="message-list__date">${message.date}</div>
+                  <div class="message-list__text">${message.content}</div>`
+                  + image +
+                `</li>`
     console.log(JSON.stringify(message)); //データ確認用
     return html;
   }
