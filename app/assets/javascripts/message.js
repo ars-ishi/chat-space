@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message){
-    var image = message.image !== null ? `<img src="${message.image}">` : "";
+    var image = message.image ? `<img src="${message.image}">` : "";
     var html =  `<li>
                   <div class="message-list__name">${message.user_name}</div>
                   <div class="message-list__date">${message.date}</div>
@@ -9,7 +9,6 @@ $(function() {
                 </li>`
     return html;
   }
-
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData($(this).get(0));
