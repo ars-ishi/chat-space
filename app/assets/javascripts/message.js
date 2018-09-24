@@ -1,17 +1,12 @@
 $(function() {
   function buildHTML(message){
-    if (message.image !== null) {
-        var image = `<div class="message-list__image"><img src="${message.image}"></div>`;
-    } else {
-        var image = "";
-    }
+    var image = message.image !== null ? `<img src="${message.image}">` : "";
     var html =  `<li>
                   <div class="message-list__name">${message.user_name}</div>
                   <div class="message-list__date">${message.date}</div>
-                  <div class="message-list__text">${message.content}</div>`
-                  + image +
-                `</li>`
-    console.log(JSON.stringify(message)); //データ確認用
+                  <div class="message-list__text">${message.content}</div>
+                  <div class="message-list__image">` + image + `</div>
+                </li>`
     return html;
   }
 
@@ -19,7 +14,7 @@ $(function() {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
     var url = $(this).attr('action');
-    $('.form__submit__btn').removeAttr('data-disable-with'); //送信後のdata-disable-with属性を解除
+    $('.form__submit__btn').removeAttr('data-disable-with');
     $.ajax({
         url: url,
         type: "POST",
