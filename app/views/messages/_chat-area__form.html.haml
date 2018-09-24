@@ -1,5 +1,5 @@
 .chat-area__form
-  = form_for [@group, @message] do |f|
+  = form_for [@group, @message], id: "new_message" do |f|
     .form__field
       = f.text_field :content, placeholder: "type a message", class: "form__field__text"
       = f.label :image, class: "form__field__icon" do
