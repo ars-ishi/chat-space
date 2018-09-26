@@ -27,6 +27,7 @@ $(function() {
     $(`.add-${ user.id }`).on('click', function(){
       addUserToMember(user);
       $(`.add-user-${ user.id }`).remove();
+      $('.chat-group-form__input').val('');
     });
   }
   function addUserToMember(user) {
