@@ -53,19 +53,19 @@ $(function() {
       url: '/users',
       data: { keyword: input },
       dataType: 'json'
-  })
-  .done(function(users) {
-      $("#user-search-result").empty();
-      if (users.length !== 0 && input) {
-        users.forEach(function(user){
-        addUserToSearch(user);
-        removeUser(user);
-        });
-      }
-      else {
-        NoUser("一致するユーザーがいません");
-      }
     })
+    .done(function(users) {
+        $("#user-search-result").empty();
+        if (users.length !== 0 && input) {
+          users.forEach(function(user){
+          addUserToSearch(user);
+          removeUser(user);
+          });
+        }
+        else {
+          NoUser("一致するユーザーがいません");
+        }
+      })
     .fail(function() {
       alert('ユーザー検索に失敗しました');
     })
