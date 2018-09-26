@@ -15,18 +15,17 @@
       %label.chat-group-form__label{ for: "chat_group_チャットメンバーを追加" } チャットメンバーを追加
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        %input#user-search-field.chat-group-form__input{ placeholder: "追加したいユーザー名を入力してください", type: "text", name: "keyword" }
+        = text_field :keyword, :name, class: 'chat-group-form__input', placeholder: '追加したいユーザー名を入力してください', id: 'user-search-field'
       #user-search-result
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       %label.chat-group-form__label{ for: "chat_group_チャットメンバー" } チャットメンバー
     .chat-group-form__field--right
       #chat-group-users
-        %input.group_json{ name: "group_json", type: "hidden", value: "#{@group_json}"}
+        = f.hidden_field :group_json, class: 'group_json', value: "#{@group_json}"
         - group.users.each do |user|
           %div{ id: "chat-group-user-#{user.id}", class: "chat-group-user clearfix js-chat-member remove-user-#{user.id}" }
             %input{ name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}
-
             %p.chat-group-user__name #{user.name}
             %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn{ class: "remove-#{ user.id }", "data-user-id": "#{ user.id }", "data-user-name": "#{ user.name }" } 削除
   .chat-group-form__field.clearfix
