@@ -1,4 +1,4 @@
-%li
+%li.messages{ 'data-id': "#{message.id}" }
   .message-list__name #{message.user.name}
   .message-list__date #{l message.created_at, format: :long}
   - if message.content.present?
