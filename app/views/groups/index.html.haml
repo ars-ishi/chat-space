@@ -6,7 +6,7 @@
     .chat-area__timeline(data-box = ".scroll")
       %ul.timeline__message-list
         - unless @messages.count == 0
-          = render partial: "messages/chat-area__timeline", collection: @messages, as: "message"
+          = render partial: "messages/message", collection: @messages, as: "message"
         - else
           %li
             .message-list__text まだメッセージはありません。メッセージや画像を投稿してみましょう。

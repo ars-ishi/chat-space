@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @group.users << current_user
+    @group_json = @group.users.to_json.html_safe
   end
 
   def create
@@ -23,6 +24,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group_json = @group.users.to_json.html_safe
   end
 
   def update
