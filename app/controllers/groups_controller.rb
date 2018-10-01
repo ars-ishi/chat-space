@@ -2,10 +2,6 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
 
   def index
-    # 一番最初のグループが選択されている状態に仮置き
-    @group = current_user.groups.first
-    @messages = @group.messages
-    @message = Message.new
   end
 
   def new
