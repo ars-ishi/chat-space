@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     else
       @messages = @group.messages.includes(:user)
       flash.now[:alert] = '送信できませんでした'
-      render :index
+      render :message
     end
   end
 
