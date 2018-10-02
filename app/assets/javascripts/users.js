@@ -15,22 +15,25 @@ $(function() {
     search_list.append(noUserHtml);
   }
   function addUserToSearch(user) {
+    var add = $(`#chat-group-user-${ user.id }`).length == 0 ? "追加" : "追加済みです";
     var searchHtml = `<div class="chat-group-user clearfix search-result add-user-${ user.id }">
                         <p class="chat-group-user__name">${ user.name }</p>
-                        <a class="add-${ user.id } user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.name }">追加</a>
+                        <a class="add-${ user.id } user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.name }">` + add + `</a>
                       </div>`
     if ( $(`#chat-group-user-${ user.id }`).length == 0 ) {
       search_list.append(searchHtml);
       moveUser(user);
     } else {
-      NoUser("一致するユーザーがいないか、すでにメンバーに追加しています");
+      search_list.append(searchHtml);
     }
   }
   function moveUser(user) {
     $(`.add-${ user.id }`).on('click', function(){
       addUserToMember(user);
       $(`.add-user-${ user.id }`).remove();
-      $('#user-search-field').val('');
+      if ( $('.search-result').length == 0 ) {
+        $('#user-search-field').val('');
+      }
     });
   }
   function addUserToMember(user) {
