@@ -1,7 +1,6 @@
 $(function() {
   var search_list = $("#user-search-result");
   var member_list = $("#chat-group-users");
-
   if( $('.group_json').val() ) {
     var memberJson = $('.group_json').val();
     var member = JSON.parse(memberJson);
@@ -20,8 +19,12 @@ $(function() {
                         <p class="chat-group-user__name">${ user.name }</p>
                         <a class="add-${ user.id } user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.name }">追加</a>
                       </div>`
-    search_list.append(searchHtml);
-    moveUser(user);
+    if ( $(`#chat-group-user-${ user.id }`).length == 0 ) {
+      search_list.append(searchHtml);
+      moveUser(user);
+    } else {
+      NoUser("一致するユーザーがいないか、すでにメンバーに追加しています");
+    }
   }
   function moveUser(user) {
     $(`.add-${ user.id }`).on('click', function(){
@@ -58,7 +61,9 @@ $(function() {
         $("#user-search-result").empty();
         if (users.length !== 0 && input) {
           users.forEach(function(user){
+
           addUserToSearch(user);
+
           removeUser(user);
           });
         }

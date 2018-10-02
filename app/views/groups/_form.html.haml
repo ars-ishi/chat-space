@@ -23,11 +23,12 @@
     .chat-group-form__field--right
       #chat-group-users
         = f.hidden_field :group_json, class: 'group_json', value: "#{@group_json}"
-        - group.users.each do |user|
+        - group.users.each_with_index do |user, i|
           %div{ id: "chat-group-user-#{user.id}", class: "chat-group-user clearfix js-chat-member remove-user-#{user.id}" }
             %input{ name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}
             %p.chat-group-user__name #{user.name}
-            %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn{ class: "remove-#{ user.id }", "data-user-id": "#{ user.id }", "data-user-name": "#{ user.name }" } 削除
+            - if i != 0
+              %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn{ class: "remove-#{ user.id }", "data-user-id": "#{ user.id }", "data-user-name": "#{ user.name }" } 削除
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
