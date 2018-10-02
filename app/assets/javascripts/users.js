@@ -9,13 +9,13 @@ $(function() {
     });
   }
   function NoUser(notice) {
-    var noUserHtml = `<div class="chat-group-user clearfix">
+    var noUserHtml = `<div class="chat-group-user clearfix search-result">
                         <p class="chat-group-user__name">${ notice }</p>
                       </div>`
     search_list.append(noUserHtml);
   }
   function addUserToSearch(user) {
-    var searchHtml = `<div class="chat-group-user clearfix add-user-${ user.id }">
+    var searchHtml = `<div class="chat-group-user clearfix search-result add-user-${ user.id }">
                         <p class="chat-group-user__name">${ user.name }</p>
                         <a class="add-${ user.id } user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name="${ user.name }">追加</a>
                       </div>`
@@ -43,10 +43,10 @@ $(function() {
     removeUser(user);
   }
   function removeUser(user) {
-    var removeBtn = '.remove-' + user.id
-    var removeUser = '.remove-user-' +  user.id
     $(`.remove-${ user.id }`).on('click', function(){
       $(`.remove-user-${ user.id }`).remove();
+      $('#user-search-field').val('');
+      $('.search-result').remove();
     });
   }
   $('#user-search-field').on('keyup', function() {
@@ -61,14 +61,12 @@ $(function() {
         $("#user-search-result").empty();
         if (users.length !== 0 && input) {
           users.forEach(function(user){
-
           addUserToSearch(user);
-
           removeUser(user);
           });
         }
         else {
-          NoUser("一致するユーザーがいません");
+          NoUser("一致するユーザーがいないか、すでにメンバーに追加しています");
         }
       })
     .fail(function() {
