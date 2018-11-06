@@ -27,8 +27,13 @@ a {
       font-size: $largeFs;
       .userinfo__username {
         max-width: 210px;
-        overflow: scroll;
+        max-height: 30px;
+        overflow: auto;
         float: left;
+        -ms-overflow-style: none;
+      }
+      .userinfo__username::-webkit-scrollbar {
+        display: none;
       }
       .userinfo__edit {
         @include clearfix();
@@ -41,7 +46,10 @@ a {
     }
     .grouo-area__group-list {
       height: calc(100vh - 100px);
-      overflow: scroll;
+      width: calc(100% + 17px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      -ms-overflow-style: none;
       li {
         a {
           padding: 20px;
@@ -49,6 +57,7 @@ a {
           word-wrap: break-word;
           &:hover {
             background: #3a4a5e;
+            width: calc(100% - 17px);
           }
         }
       }
@@ -59,7 +68,9 @@ a {
       .group-list__message {
         font-size: $smallFs - 1px;
       }
-
+    }
+    .grouo-area__group-list::-webkit-scrollbar {
+      display: none;
     }
   }
   .chat-area {
@@ -77,26 +88,34 @@ a {
           float: left;
           width: 100%;
           .group-info__name {
-            padding-top: 35px;
+            margin-top: 35px;
             font-size: $largeFs + 4px;
             color: #333;
             width: calc(100% - 95px);
-            height: 65px;
-            overflow: scroll;
-            white-space: nowrap;
+            height: 30px;
+            overflow-y: auto;
+            word-break: break-word;
+            -ms-overflow-style: none;
+          }
+          .group-info__name::-webkit-scrollbar {
+            display: none;
           }
           .group-info__member-list {
             float: left;
-            height: 33px;
+            height: 20px;
             width: calc(100% - 95px);
-            padding-top: 15px;
-            overflow: scroll;
+            margin-top: 15px;
+            overflow-y: auto;
             font-size: $smallFs;
+            -ms-overflow-style: none;
             li {
               float: left;
               padding: 0 2px;
               color: $grayColor;
             }
+          }
+          .group-info__member-list::-webkit-scrollbar {
+            display: none;
           }
         }
       .header__group-member-edit {
@@ -117,11 +136,11 @@ a {
     }
     .chat-area__timeline {
       padding: 46px 40px 0;
-      overflow: scroll;
+      overflow-y: auto;
       height: calc(100vh - 190px);
+      -ms-overflow-style: none;
       .timeline__message-list {
         @include clearfix();
-        overflow: scroll;
         li {
           @include clearfix();
           width: 100%;
@@ -157,6 +176,9 @@ a {
           }
         }
       }
+    }
+    .chat-area__timeline::-webkit-scrollbar {
+      display: none;
     }
     .chat-area__form {
       width: 100%;
